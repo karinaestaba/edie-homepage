@@ -44,6 +44,10 @@ img:not(.icon):not(.avatar),
 a
   text-decoration: none
 
+  &:hover
+    cursor: 
+    opacity: .8
+
 button
   background-color: $primary-color
   color: hsla(0, 0%, 95%, 1)
@@ -402,7 +406,14 @@ footer
         gap: 10px
         font-size: 18px
         line-height: 36px
-      
+
+        &-item > a
+          color: $light-color
+
+          &:hover
+            color: darken($light-color, 20%)
+            transition: all 1s
+
       &-social
         .social-links
           list-style: none
@@ -413,6 +424,10 @@ footer
           a:hover
             opacity: .6
             transition: all .5s
+
+      &-suscription
+        .suscription-subtitle
+          color: hsla(0, 0%, 95%, 1)
 
   .footer-credits
     font-size: 12px
@@ -600,6 +615,7 @@ footer
       margin-top: -38px
       font-size: 24px
       line-height: 36px
+      position: relative
 
   .team
     grid-template-areas: "c-text c-img"
@@ -617,7 +633,7 @@ footer
         padding-top: 0
 
       &:nth-child(2)
-        margin-top: -120px
+        margin-top: -58px
 
     &-subtitule
       font-size: 18px

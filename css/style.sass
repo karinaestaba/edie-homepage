@@ -14,6 +14,9 @@ $light-color:	hsl(0, 0%, 100%)
   padding: 0
   box-sizing: border-box
 
+*
+  scroll-behavior: smooth
+
 html,
 body,
 input,
@@ -55,15 +58,8 @@ button
     background-color: darken($primary-color, 10%)
     transition: all 1s
 
-.toggle-nav
-  background-color: transparent
-  border: none
-  padding-top: 2px
-  z-index: 2
-  cursor: pointer
-
 .main-nav
-  animation: swipeMenu .25s forwards ease-out
+  display: block
 
 section
   padding-bottom: 100px
@@ -72,7 +68,7 @@ section
     padding-bottom: 22px
 
 .container
-  max-width: 1220px
+  max-width: 1440px
   margin: 0 auto
   padding-left: 10px
   padding-right: 10px
@@ -98,7 +94,20 @@ section
     width: 100%
 
   &-nav
-    display: none
+    background-color: $light-color
+    position: fixed
+    left: 100%
+    right: 0
+    top: 0
+    width: 100%
+    height: 100vh
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px
+    transition: left 300ms 300ms
+
+    display: flex
+    flex-direction: column
+    padding: 9rem 3rem 0
+    text-align: left
 
   &-menu
     list-style: none
@@ -120,40 +129,30 @@ section
   &-content
     padding-top: 101px
 
-#toggle-nav
-  display: none
+#toggle-btn
+  &-close
+    z-index: 1
+    height: 35px
+    position: fixed
+    right: 1rem
+    top: 1rem
+    visibility: hidden
+    background-color: $light-color
 
-  &:checked
-    
-    + .toggle-nav
-      content: url("../img/icon/close.svg")
-      height: 40px
-      position: fixed
-      right: 1rem
-      top: 1rem
+  > img
+    height: 35px
+    position: fixed
+    right: 1rem
+    top: 1rem
 
-      + .main-nav
-        height: 100vh
-        width: 90%
-        position: fixed
-        right: 0
-        z-index: 1
-        top: 0
-        bottom: 0
+  &:focus
+    ~ #toggle-btn-close
+      visibility: visible
+      animation: rollIn 1.5s ease 0s 1 normal forwards
 
-        display: flex
-        flex-direction: column
-
-        padding: 8rem 3rem 0
-        text-align: center
-        background: $light-color
-        transition: 0.3s
-
-        animation: swipeMenu 1s ease 0s 1 normal forwards
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px
-
-        .main-menu
-          text-align: left
+    ~ .main-nav
+      left: 5%
+      transition-delay: 0
 
 .hero
   &-subtitle
@@ -171,9 +170,12 @@ section
     line-height: 36px
     margin-bottom: 15px
     padding: 0 50px
+    white-space: pre-line
 
   &-img > img
     padding: 10px
+    min-height: 145px
+    object-fit: cover
 
 .suscription
   padding: 0 50px 100px
@@ -443,10 +445,24 @@ footer
 .footer-logo
   color: $light-color
 
-//@media (min-width: 375px)
-  
+@media (min-width: 620px)
+  .team
+    grid-template-columns: 1fr 1fr
 
-// @media (min-width: 768px)
+@media (min-width: 768px)
+  .porfolio
+    &-grid
+      grid-template-columns: repeat(2, minmax(300px, 1fr))
+
+    &-item:nth-child(odd)
+      padding-top: 100px
+
+    &-cta
+      text-align: right
+      margin-top: -28px
+      font-size: 18px
+      line-height: 27px
+      float: right
 
 @media (min-width: 992px)
   html,
@@ -461,7 +477,8 @@ footer
   section
     padding-bottom: 200px
 
-  .toggle-nav
+  #toggle-btn,
+  #toggle-btn-close,
     display: none
 
   .main
@@ -470,11 +487,16 @@ footer
 
     &-nav
       display: block
+      padding: 0
+      position: initial
+      height: initial
+      box-shadow: none
 
     &-menu
       font-size: 24px
       line-height: 36px
       flex-direction: row
+      justify-content: end
       
     &-content
       padding-top: 197px
@@ -483,11 +505,12 @@ footer
     font-size: 36px
     line-height: 54px
     margin-bottom: 42px
+    padding: 0
 
   .hero
     display: grid
     grid-template-areas: ". c1 ." ". c2 ." "c3 c3 c3"
-    grid-template-columns: 1fr 3.5fr 3fr
+    grid-template-columns: 2fr 5.4fr 4fr
     padding-bottom: 42px
 
     &-subtitle
@@ -497,6 +520,8 @@ footer
       grid-area: c1
       padding: 0
 
+      max-width: 1440px
+
     &-title
       font-size: 48px
       line-height: 72px
@@ -504,22 +529,30 @@ footer
       grid-area: c2
       white-space: pre-line
       padding: 0
+
+      max-width: 1440px
     
     &-img
       grid-area: c3
       padding-left: 56px
       padding-right: 56px
 
+      > img
+        padding: 0
+
   .suscription
     display: grid
     grid-template-areas: ". c1 ." ". c2 ." ". c3 ." ". c4 ." 
-    grid-template-columns: 1fr 2fr 4.5fr
+    grid-template-columns: .5fr 2fr 4.5fr
+    padding: 0 0 200px
+    max-width: 1440px
+    margin: 0 auto
 
     .title
       grid-area: c1
       white-space: pre-line
-      font-size: 36px
-      line-height: 54px
+      font-size: 48px
+      line-height: 72px
       padding: 0
 
     &-description
@@ -546,8 +579,6 @@ footer
       line-height: 24px
 
   .porfolio
-    &-grid
-      grid-template-columns: repeat(2, minmax(300px, 1fr))
 
     &-subtitle
       font-size: 14px
@@ -560,16 +591,15 @@ footer
     &-item:nth-child(odd)
       padding-top: 176px
 
-    &-cta
-      text-align: right
-      margin-top: -36px
-      font-size: 24px
-      line-height: 36px
-
     .title
       font-size: 36px
       line-height: 54px
       padding: 0
+
+    &-cta
+      margin-top: -38px
+      font-size: 24px
+      line-height: 36px
 
   .team
     grid-template-areas: "c-text c-img"
@@ -604,14 +634,13 @@ footer
     .main-footer
       grid-template-columns: 1.5fr 2.5fr 3fr
       gap: 2rem
+      padding-bottom: 0
 
-@keyframes swipeMenu
+@keyframes rollIn
   0%
     opacity: 0
-    transform: rotateY(-100deg)
-    transform-origin: right
+    transform: rotate(-540deg) scale(2)
 
   100%
     opacity: 1
-    transform: rotateY(0)
-    transform-origin: right
+    transform: rotate(0) scale(1)

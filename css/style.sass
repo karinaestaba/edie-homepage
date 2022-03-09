@@ -55,8 +55,21 @@ button
     background-color: darken($primary-color, 10%)
     transition: all 1s
 
+.toggle-nav
+  background-color: transparent
+  border: none
+  padding-top: 2px
+  z-index: 2
+  cursor: pointer
+
+.main-nav
+  animation: swipeMenu .25s forwards ease-out
+
 section
-  padding-bottom: 146px
+  padding-bottom: 100px
+
+  &.hero
+    padding-bottom: 22px
 
 .container
   max-width: 1220px
@@ -68,16 +81,24 @@ section
   font-weight: 500
   font-size: 24px
   line-height: 36px
-  margin-bottom: 10px
+  margin-bottom: 27px
   white-space: pre-line
+  padding: 0 40px
 
 .main
   &-header
     display: flex
     justify-content: space-between
-    padding: 51px 56px
+    margin-bottom: 36px
+    padding: 13px 10px
     z-index: 1
     align-items: center
+    position: fixed
+    background: $light-color
+    width: 100%
+
+  &-nav
+    display: none
 
   &-menu
     list-style: none
@@ -96,6 +117,44 @@ section
         opacity: .5
         transition: all .5s
 
+  &-content
+    padding-top: 101px
+
+#toggle-nav
+  display: none
+
+  &:checked
+    
+    + .toggle-nav
+      content: url("../img/icon/close.svg")
+      height: 40px
+      position: fixed
+      right: 1rem
+      top: 1rem
+
+      + .main-nav
+        height: 100vh
+        width: 90%
+        position: fixed
+        right: 0
+        z-index: 1
+        top: 0
+        bottom: 0
+
+        display: flex
+        flex-direction: column
+
+        padding: 8rem 3rem 0
+        text-align: center
+        background: $light-color
+        transition: 0.3s
+
+        animation: swipeMenu 1s ease 0s 1 normal forwards
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px
+
+        .main-menu
+          text-align: left
+
 .hero
   &-subtitle
     color: $primary-color
@@ -103,15 +162,22 @@ section
     font-size: 12px
     line-height: 18px
     display: block
+    padding: 0 50px
 
   &-title
     color: $dark-color
     font-weight: 500
-    font-size: 48px
-    line-height: 24px
-    margin-bottom: 36px
+    font-size: 24px
+    line-height: 36px
+    margin-bottom: 15px
+    padding: 0 50px
+
+  &-img > img
+    padding: 10px
 
 .suscription
+  padding: 0 50px 100px
+
   &-title
     color: $dark-color
     font-weight: 500
@@ -140,7 +206,7 @@ section
 
   &-input
     border-radius: 12px
-    height: 57px
+    height: 47px
     background: transparent
     border: none
     padding: 15px 21px
@@ -148,9 +214,10 @@ section
 
   .title
     color: $dark-color
-    font-size: 36px
-    line-height: 54px
-    margin-bottom: 35px 
+    font-size: 24px
+    line-height: 36px
+    margin-bottom: 36px
+    padding: 0
 
 .service
   &-grid
@@ -187,7 +254,7 @@ section
 
   &-item
     border-radius: 24px
-    padding: 46px 34px
+    padding: 46px  40px
 
     &:hover
       box-shadow: 0px 10px 30px rgba(51, 51, 51, 0.1)
@@ -231,11 +298,21 @@ section
 
   &-cta
     color: $primary-color
-    display: block
     margin-top: 36px
     font-weight: 500
     font-size: 18px
     line-height: 27px
+
+    display: flex
+    gap: 12px
+
+    > img
+        filter: invert(58%) sepia(16%) saturate(2117%) hue-rotate(161deg) brightness(90%) contrast(90%)
+
+  .title
+    font-size: 24px
+    line-height: 36px
+    padding: 0 40px
 
 .team
   display: grid
@@ -248,17 +325,27 @@ section
     line-height: 27px
     color: $accent-color
 
+  &-description
+    font-size: 16px
+    line-height: 24px
+    white-space: pre-line
+
+  .title
+    padding: 0
+    font-size: 36px
+    line-height: 54px
+
   &-img-container
     display: grid
     grid-template-areas: "img1 img2" "img1 img3"
-    gap: 24px
+    gap: 9px
 
     .team-item
       &:first-of-type
         grid-area: img1
         justify-self: flex-end
         max-width: 320px
-        padding-top: 60px
+        margin-top: 60px
 
       &:nth-child(2)
         grid-area: img2
@@ -278,6 +365,11 @@ section
       height: 82px
       object-fit: cover
 
+  .title
+    font-size: 24px
+    line-height: 36px
+    padding: 0
+
   &-title
     display: block
     font-size: 24px
@@ -292,12 +384,12 @@ section
 footer
   background-color: hsla(248, 35%, 8%, 1)
   color: $light-color
-  padding-top: 46px
+  padding: 36px 40px
   
   .main-footer
     display: grid
     grid-template-columns: 1fr
-    gap: 2rem
+    gap: 64px
     padding-bottom: 46px
 
     .footer
@@ -326,6 +418,7 @@ footer
     text-align: center
     color: $medium-color
     padding-bottom: 20px
+    margin-top: 154px
     
     a
       color: lighten($dark-color, 25%)
@@ -366,16 +459,25 @@ footer
     line-height: 27px
 
   section
-     padding-bottom: 200px
+    padding-bottom: 200px
 
-  .toggle-nav-btn
+  .toggle-nav
     display: none
 
   .main
+    &-header
+      padding: 51px 48px
+
+    &-nav
+      display: block
+
     &-menu
       font-size: 24px
       line-height: 36px
       flex-direction: row
+      
+    &-content
+      padding-top: 197px
 
   .title
     font-size: 36px
@@ -393,6 +495,7 @@ footer
       line-height: 27px
       margin-bottom: 16px
       grid-area: c1
+      padding: 0
 
     &-title
       font-size: 48px
@@ -400,6 +503,7 @@ footer
       margin-bottom: 42px
       grid-area: c2
       white-space: pre-line
+      padding: 0
     
     &-img
       grid-area: c3
@@ -414,6 +518,9 @@ footer
     .title
       grid-area: c1
       white-space: pre-line
+      font-size: 36px
+      line-height: 54px
+      padding: 0
 
     &-description
       grid-area: c2
@@ -426,6 +533,9 @@ footer
 
     &-form-container
       grid-area: c4
+
+    &-input
+      height: 57px
 
   .service
     &-grid
@@ -455,7 +565,11 @@ footer
       margin-top: -36px
       font-size: 24px
       line-height: 36px
-      
+
+    .title
+      font-size: 36px
+      line-height: 54px
+      padding: 0
 
   .team
     grid-template-areas: "c-text c-img"
@@ -467,6 +581,7 @@ footer
     &-img-container
       grid-area: c-img
       grid-template-columns: repeat(2, minmax(200px, 1fr))
+      gap: 24px
 
       &:first-of-type
         padding-top: 0
@@ -477,12 +592,26 @@ footer
     &-subtitule
       font-size: 18px
       line-height: 27px
-
-    &-description
-      font-size: 16px
-      line-height: 24px
   
+  .testimonial
+    .title
+      font-size: 36px
+      line-height: 54px
+
   footer
-    .main-footer  
-      display: grid
+    padding: 46px 0 0
+  
+    .main-footer
       grid-template-columns: 1.5fr 2.5fr 3fr
+      gap: 2rem
+
+@keyframes swipeMenu
+  0%
+    opacity: 0
+    transform: rotateY(-100deg)
+    transform-origin: right
+
+  100%
+    opacity: 1
+    transform: rotateY(0)
+    transform-origin: right

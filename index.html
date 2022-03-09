@@ -12,7 +12,11 @@
 <body>
   <header class="main-header container-fluid">
     <span class="main-logo">Edie</span>
-    <button class="toggle-nav-btn"></button>
+    
+    <input type="checkbox" id="toggle-nav">
+    <label class="toggle-nav" for="toggle-nav">
+      <img class="icon" src="img/icon/menu.svg" alt="Icono" height="35">
+    </label>
 
     <nav class="main-nav">
       <ul class="main-menu">
@@ -29,7 +33,7 @@
         </li>
 
         <li class="main-menu-item">
-          <a href="#sectionTestimonials">Contact</a>
+          <a href="#sectionTeam">Contact</a>
         </li>
       </ul>
     </nav>
@@ -177,10 +181,10 @@
           </h3>
         </article>
       </div>
-      <a href="#!" class="porfolio-cta">see more </a>
+      <a href="#!" class="porfolio-cta">see more <img src="img/icon/arrow-right.svg" alt="Icon arrow" class="icon" width="30"></a>
     </section>
 
-    <section class="team container">
+    <section class="team container" id="sectionTeam">
       <div class="team-text-container">
         <small class="team-subtitle">
           Meet the team
@@ -190,9 +194,8 @@
         and a laidback
         team</h2>
 
-        <p class="team-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
+        <p class="team-description">Lorem ipsum dolor sit amet, 
+          consectetur adipiscing elit.</p>
       </div>
 
       <div class="team-img-container">

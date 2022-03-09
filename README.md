@@ -1,4 +1,4 @@
-# Dev Challenges - Checkout page
+# Dev Challenges - Edie homepage
 
 This is a solution to the [Edie homepage challenge on Dev Challenges](https://devchallenges.io/challenges/xobQBuf8zWWmiYMIAZe0). Challenge: Create a static page with HTML and CSS following the designs. Don’t look at the existing solution.
 

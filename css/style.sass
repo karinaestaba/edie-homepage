@@ -325,11 +325,20 @@ section
   gap: 2rem
   grid-template-columns: 1fr
   grid-template-areas: "c-text" "c-img"
+
+  &-text-container
+    display: grid
+    grid-template-areas: "t1" "t2" "."
+
+  &-text-group
+    grid-area: t2
   
   &-subtitle
     font-size: 18px
     line-height: 27px
     color: $accent-color
+    grid-area: t1
+    align-self: end
 
   &-description
     font-size: 16px
@@ -343,23 +352,20 @@ section
 
   &-img-container
     display: grid
-    grid-template-areas: "img1 img2" "img1 img3"
+    grid-template-areas: ". img2" "img1 img2" "img1 img3"
     gap: 9px
 
     .team-item
       &:first-of-type
         grid-area: img1
         justify-self: flex-end
-        max-width: 320px
-        margin-top: 60px
 
       &:nth-child(2)
         grid-area: img2
-        max-width: 260px
+        max-width: 90%
 
       &:last-of-type
         grid-area: img3
-        max-width: 291px
 
 .testimonial
   &-item
@@ -375,6 +381,7 @@ section
     font-size: 24px
     line-height: 36px
     padding: 0
+    white-space: initial
 
   &-title
     display: block

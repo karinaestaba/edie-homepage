@@ -72,7 +72,7 @@ section
     padding-bottom: 22px
 
 .container
-  max-width: 1440px
+  max-width: 1220px
   margin: 0 auto
   padding-left: 10px
   padding-right: 10px
@@ -486,6 +486,17 @@ footer
       line-height: 27px
       float: right
 
+  .testimonial
+    display: grid
+    grid-template-areas: "c1 ." "c2 ."
+    grid-template-columns: 3fr 1fr
+
+    .title
+      grid-area: c1
+
+    .testimonial-item
+      grid-area: c2
+
 @media (min-width: 992px)
   html,
   body,
@@ -542,7 +553,7 @@ footer
       grid-area: c1
       padding: 0
 
-      max-width: 1440px
+      max-width: 1220px
 
     &-title
       font-size: 48px
@@ -552,7 +563,7 @@ footer
       white-space: pre-line
       padding: 0
 
-      max-width: 1440px
+      max-width: 1220px
     
     &-img
       grid-area: c3
@@ -567,7 +578,7 @@ footer
     grid-template-areas: ". c1 ." ". c2 ." ". c3 ." ". c4 ." 
     grid-template-columns: .5fr 2fr 4.5fr
     padding: 0 0 200px
-    max-width: 1440px
+    max-width: 1220px
     margin: 0 auto
 
     .title

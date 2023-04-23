@@ -38,14 +38,13 @@ body
 img:not(.icon)
   border-radius: 12px 
 
-img:not(.icon):not(.avatar),
+img:not(.icon):not(.avatar)
   width: 100%
 
 a
   text-decoration: none
 
   &:hover
-    cursor: 
     opacity: .8
 
 button
@@ -446,13 +445,17 @@ footer
     
     a
       color: lighten($dark-color, 25%)
-      font-weight: 700
       text-decoration: none
+      white-space: nowrap
+      transition: all .5s ease
 
       &:hover,
       &:active,
       &:focus
         color: darken($medium-color, 10%)
+
+    img.icon-link
+      width: 10px
 
 .main-logo,
 .footer-logo
@@ -511,7 +514,7 @@ footer
     padding-bottom: 200px
 
   #toggle-btn,
-  #toggle-btn-close,
+  #toggle-btn-close
     display: none
 
   .main
